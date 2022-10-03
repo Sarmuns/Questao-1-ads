@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questão 1</title>
+  <script>
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+
+    function doSomething() {
+      var fullname = document.getElementById("fullname").value;
+      var listName = fullname.split(" ");
+      var listNameLength = listName.length;
+      for(x=0;listNameLength>x;x++){
+        listName[x] = capitalizeFirstLetter(listName[x]);
+      }
+      var resultName = listName[listNameLength-1];
+      if (listNameLength > 1) {
+        resultName += ", "+listName[0];
+        for (x=1;x<listNameLength-1;x++) {
+          resultName += " "+listName[x][0];
+
+        }
+      }
+
+      var h1 = document.getElementById("1");
+      if(!h1){
+
+        var newh1 = document.createElement("h1");
+        newh1.id = "1";
+        newh1.className = "garrafal";
+        newh1.innerHTML = resultName;
+        var divToMoveTo = document.getElementById("placeBefore");
+        divToMoveTo.insertBefore(newh1, divToMoveTo.children[0]);
+      } else {
+        h1.innerHTML = resultName;
+      }
+    }
+
+  </script>
+  <style>
+      .garrafal{
+        font-size: 71px;
+      }
+      body{
+        margin-left: 35px;
+        margin-top: 20px;
+      }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Trabalho de Ambientes desenv de software</h1>
+    <ul>
+      <li>Filipe Pacheco - 2219523</li>
+      <li>Julia Nogueira - 2217218</li>
+      <li>Samuel Alcântara - 2213017</li>
+      <li>Vasco Weyne - 2213030</li>
+    </ul>
+  </div>
+  <form>
+    <label for="fullname">Digite o nome completo:</label><br><br>
+    <input type="text" id="fullname" name="fullname" value="Antonio Augusto Ribeiro Pedroza"<br><br>
+  </form>
+  <br>
+  <button onclick="doSomething()">Formatar</button>
+  <p id="placeBefore"></p>
+
+</body>
+</html>
